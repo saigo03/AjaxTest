@@ -1,0 +1,37 @@
+<h1>Folders</h1>
+
+<%= form_with(model: @folder, local: true) do |form| %>
+  <% if @folder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@folder.errors.count, "error") %> prohibited this folder from being saved:</h2>
+
+      <ul>
+      <% @folder.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Folder" %>
+  </div>
+<% end %>
+
+<h2>Existing Folders</h2>
+
+<ul>
+  <% @folders.each do |folder| %>
+    <li>
+      <%= folder.name %>
+      <%# ページ一覧へ %>
+      <%# link_to 'Create Memo', new_folder_memo_path(folder) %>
+      <%= link_to 'Show', folder_memos_path(folder) %>
+    </li>
+  <% end %>
+</ul>

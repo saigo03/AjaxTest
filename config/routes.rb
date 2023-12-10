@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  root "hello#index"
+  resources :folders do
+    resources :memos
+  end
+  root to: 'folders#index'
 end

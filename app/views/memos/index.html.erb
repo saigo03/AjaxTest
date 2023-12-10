@@ -1,0 +1,16 @@
+<h1>Memos in <%= @folder.name %></h1>
+
+<%= link_to 'New Memo', new_folder_memo_path(@folder) %>
+
+<ul>
+  <% @memos.each do |memo| %>
+    <li>
+      <%= memo.title %>
+      <%= link_to 'Show', folder_memo_path(@folder, memo) %>
+      <%= link_to 'Edit', edit_folder_memo_path(@folder, memo) %>
+      <%= link_to 'Delete', folder_memo_path(@folder, memo), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Folders', folders_path %>
