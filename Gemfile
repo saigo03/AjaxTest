@@ -13,6 +13,10 @@ gem "jbuilder",        "2.11.5"
 gem "puma",            "5.6.5"
 gem "bootsnap",        "1.16.0", require: false
 gem "sqlite3",         "1.6.1"
+gem 'bootstrap', '~> 5.3.0'
+gem 'mini_racer', '~> 0.8.0'
+gem 'jquery-rails', '~> 4.6'
+
 
 group :development, :test do
   gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]
