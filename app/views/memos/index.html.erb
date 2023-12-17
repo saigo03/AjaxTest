@@ -1,29 +1,20 @@
-<h1>Memos in <%= @folder.name %></h1>
+    <h1><%= @folder.name %>のメモ</h1>
 
-<%= link_to 'New Memo', new_folder_memo_path(@folder) %>
+    <!-- Bootstrapのボタンスタイルを適用 -->
+    <%= link_to '新しいメモ', new_folder_memo_path(@folder), class: 'btn btn-primary mb-3' %>
 
-<ul>
-  <% @memos.each do |memo| %>
-    <li>
-      <%= memo.title %>
-      <%= link_to 'Show', folder_memo_path(@folder, memo) %>
-      <%= link_to 'Edit', edit_folder_memo_path(@folder, memo) %>
-      <%= link_to 'Delete', folder_memo_path(@folder, memo), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
-  <% end %>
-</ul>
+    <!-- Bootstrapスタイルのリスト -->
+    <ul class="list-group">
+        <% @memos.each do |memo| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <%= memo.title %>
+                <div>
+                    <%= link_to '表示', folder_memo_path(@folder, memo), class: 'btn btn-secondary btn-sm' %>
+                    <%= link_to '編集', edit_folder_memo_path(@folder, memo), class: 'btn btn-warning btn-sm' %>
+                    <%= link_to '削除', folder_memo_path(@folder, memo), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm' %>
+                </div>
+            </li>
+        <% end %>
+    </ul>
 
-<%= link_to 'Back to Folders', folders_path %>
-
-<button type="button" class="btn btn-dark">Dark</button>
-
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul>
-</div>
+    <%= link_to 'フォルダーに戻る', folders_path, class: 'btn btn-light mt-3' %>
