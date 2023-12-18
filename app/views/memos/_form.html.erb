@@ -1,32 +1,48 @@
-<%= form_with(model: [@folder, memo], local: true, class: 'needs-validation', novalidate: true) do |form| %>
-  <% if memo.errors.any? %>
-    <!-- エラーメッセージをBootstrapのアラートスタイルで表示 -->
-    <div class="alert alert-danger" role="alert">
-      <h4 class="alert-heading"><%= pluralize(memo.errors.count, "error") %> prohibited this memo from being saved:</h4>
-      <ul>
-        <% memo.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+    <!-- ナビゲーションパーシャルを読み込む -->
+    <%= render 'shared/navbar' %>
+
+    <!-- フォームをナビゲーションの右側に配置 -->
+    <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+      <%= form_with(model: [@folder, memo], local: true, class: 'needs-validation', novalidate: true) do |form| %>
+        <% if memo.errors.any? %>
+          <!-- エラーメッセージをBootstrapのアラートスタイルで表示 -->
+          <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading"><%= pluralize(memo.errors.count, "error") %> prohibited this memo from being saved:</h4>
+            <ul>
+              <% memo.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <!-- Bootstrapのフォームグループを適用 -->
+        <div class="mb-3">
+          <%= form.label :title, class: 'form-label' %>
+          <%= form.text_field :title, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :content, class: 'form-label' %>
+          <%= form.text_area :content, id: 'memo_content', class: 'form-control custom-textarea', style: 'height: 60vh;' %>
+        </div>
+
+        <!-- 特定の文字列を挿入するボタンを追加 -->
+        <%= button_tag '白紙にする', type: 'button', id: 'clear_textarea', class: 'btn btn-secondary mb-3' %>
+
+        <!-- 特定の文字列を挿入するボタンを追加 -->
+        <%= button_tag '貼り付け用テンプレート表示', type: 'button', id: 'insert_text2', class: 'btn btn-secondary mb-3' %>
+
+        <!-- 特定の文字列を挿入するボタンを追加 -->
+        <%= button_tag 'エラー用テンプレート表示', type: 'button', id: 'insert_text3', class: 'btn btn-secondary mb-3' %>
+
+        <!-- Bootstrapのボタンスタイルを適用 -->
+        <div class="actions">
+          <%= form.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <!-- Bootstrapのフォームグループを適用 -->
-  <div class="mb-3">
-    <%= form.label :title, class: 'form-label' %>
-    <%= form.text_field :title, class: 'form-control' %>
   </div>
-
-  <div class="mb-3">
-    <%= form.label :content, class: 'form-label' %>
-    <%= form.text_area :content, id: 'memo_content', class: 'form-control custom-textarea', style: 'height: 60vh;' %>
-  </div>
-
-  <!-- 特定の文字列を挿入するボタンを追加 -->
-  <%= button_tag '特定の文字を挿入', type: 'button', id: 'insert_text', class: 'btn btn-secondary mb-3' %>
-
-  <!-- Bootstrapのボタンスタイルを適用 -->
-  <div class="actions">
-    <%= form.submit class: 'btn btn-primary' %>
-  </div>
-<% end %>
+</div>
