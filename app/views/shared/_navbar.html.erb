@@ -3,7 +3,7 @@
     <!-- ログインしているユーザーのメールアドレスを表示 -->
     <%# if user_signed_in? %>
       <div class="px-3 text-white">
-        <p>ログイン中</p>
+        <p><%= current_user.email %></p>
       </div>
     <%# end %>
 

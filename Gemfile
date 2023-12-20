@@ -16,6 +16,7 @@ gem "sqlite3",         "1.6.1"
 gem 'bootstrap', '~> 5.3.0'
 gem 'mini_racer', '~> 0.8.0'
 gem 'jquery-rails', '~> 4.6'
+gem 'devise'
 
 
 group :development, :test do
