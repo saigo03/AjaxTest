@@ -4,9 +4,19 @@
     <!-- ナビゲーションパーシャルを読み込む -->
     <%= render 'shared/navbar' %>
 
+    <%= render 'shared/mypage' %>
+
     <!-- メモ一覧 -->
     <main class="col-md-10 bg-light p-4">
       <h1 class="mb-4"><%= @folder.name %>のメモ</h1>
+
+      <!-- マイページのボタン -->
+      <button id="mypage-link">マイページ</button>
+
+      <!-- マイページのポップアップコンテンツ -->
+      <div id="mypage-popup" style="display: none;">
+        <p>メールアドレス: <%= current_user.email %></p>
+      </div>
 
       <%= link_to '新しいメモ', new_folder_memo_path(@folder), class: 'btn btn-primary mb-3' %>
 

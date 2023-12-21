@@ -6,3 +6,4 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "./memo/memo_form"
+import "./mypage/mypage"
