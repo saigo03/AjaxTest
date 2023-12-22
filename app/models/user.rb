@@ -20,12 +20,14 @@ class User < ApplicationRecord
 
     # 初めてのメモ作成時にポイントを追加
     if self.memos.count == 1
-      self.points += 1
+      mission_one_points = Mission.find_by(id: 3).points_value
+      self.points += mission_one_points
     end
 
     # メモ作成回数が100回に達した時にポイントを追加
-    if self.memos.count == 100
-      self.points += 3
+    if self.memos.count == 3
+      mission_two_points = Mission.find_by(id: 4).points_value
+      self.points += mission_two_points
     end
 
     # ポイントの変更があった場合のみ保存
