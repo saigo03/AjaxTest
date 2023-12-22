@@ -1,9 +1,10 @@
 class FoldersController < ApplicationController
   before_action :set_folder, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /folders
   def index
-    @folders = Folder.all
+    @folders = current_user.folders
     @folder = Folder.new  # 新しいフォルダ用
   end
 
@@ -22,7 +23,8 @@ class FoldersController < ApplicationController
 
   # POST /folders
   def create
-    @folder = Folder.new(folder_params)
+    #ユーザーと関連づいたフォルダに変更しないとエラーとなる
+    @folder = current_user.folders.new(folder_params) # 新しいフォルダ用
 
     if @folder.save
       redirect_to folders_path, notice: 'Folder was successfully created.'

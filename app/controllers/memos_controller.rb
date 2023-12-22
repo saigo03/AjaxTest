@@ -24,6 +24,8 @@ class MemosController < ApplicationController
     @memo = @folder.memos.build(memo_params)
 
     if @memo.save
+      current_user.check_mission
+      
       redirect_to folder_memos_path(@folder), notice: 'Memo was successfully created.'
     else
       render :new

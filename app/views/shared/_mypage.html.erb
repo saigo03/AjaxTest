@@ -4,7 +4,11 @@
       プロフィール
     </div>
     <div class="card-body">
-      <h5 class="card-title"><%= current_user.email %></h5>
+      <h5 class="card-title">
+        <p><%= current_user.email %></p>
+        <p>現在のランク：<%= current_user.rank %></p>
+        <p>現在のポイント:<%= current_user.points %></p>
+      </h5>
     </div>
   </div>
 

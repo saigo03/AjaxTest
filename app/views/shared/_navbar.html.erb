@@ -20,7 +20,9 @@
       <li class="nav-item">
         <%= link_to '新しいメモ', new_folder_memo_path(@folder), class: 'nav-link text-white' %>
       </li>
-      <!-- 他のナビゲーションリンク -->
+      <li>
+        <%= link_to 'ログアウト', destroy_user_session_path,  data: { turbo_method: :delete } %>
+      </li>
     </ul>
   </div>
 </nav>
