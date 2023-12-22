@@ -1,4 +1,24 @@
 <div class="mypage-popup" id="mypage-popup" style="display: none;">
-  <p>メールアドレス: <%= current_user.email %></p>
-  <%= link_to '新規めも', new_folder_memo_path %>
+  <div class="card mb-3">
+    <div class="card-header">
+      プロフィール
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= current_user.email %></h5>
+    </div>
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-header">
+      アカウント情報
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">メールアドレス</h5>
+      <p class="card-text"><%= current_user.email %></p>
+      <div class="account-options">
+        <p><%= link_to 'パスワードの変更', edit_user_registration_path %></p>
+        <p><%= link_to "アカウント削除", registration_path(:user), data: { turbo_method: :delete }, style: "color: red;" %></p>
+      </div>
+    </div>
+  </div>
 </div>
