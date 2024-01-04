@@ -29,15 +29,6 @@
           <%= form.text_area :content, id: 'memo_content', class: 'form-control custom-textarea', style: 'height: 60vh;' %>
         </div>
 
-        <!-- 特定の文字列を挿入するボタンを追加 -->
-        <%= button_tag '白紙にする', type: 'button', id: 'clear_textarea', class: 'btn btn-secondary mb-3' %>
-
-        <!-- 特定の文字列を挿入するボタンを追加 -->
-        <%= button_tag '貼り付け用テンプレート表示', type: 'button', id: 'insert_text2', class: 'btn btn-secondary mb-3' %>
-
-        <!-- 特定の文字列を挿入するボタンを追加 -->
-        <%= button_tag 'エラー用テンプレート表示', type: 'button', id: 'insert_text3', class: 'btn btn-secondary mb-3' %>
-
         <!-- Bootstrapのボタンスタイルを適用 -->
         <div class="actions">
           <%= form.submit class: 'btn btn-primary' %>
@@ -46,3 +37,20 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="templateModal" tabindex="-1" aria-labelledby="templateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="templateModalLabel">テンプレート選択</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= button_tag '白紙にする', type: 'button', id: 'clear_textarea', class: 'btn btn-secondary', data: { template_type: 'clear_textarea' } %>
+        <%= button_tag '貼り付け用テンプレート', type: 'button', id: 'insert_text2', class: 'btn btn-secondary', data: { template_type: 'insert_text2' } %>
+        <%= button_tag 'エラー用テンプレート', type: 'button', id: 'insert_text3', class: 'btn btn-secondary', data: { template_type: 'insert_text3' } %>
+      </div>
+    </div>
+  </div>
+</div>
+
