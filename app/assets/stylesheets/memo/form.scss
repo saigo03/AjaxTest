@@ -19,3 +19,21 @@
   outline: none;
   box-shadow: none;
 }
+
+/* コンテキストメニュー */
+#custom-context-menu {
+  position: absolute;
+  z-index: 1000;
+  background-color: white; /* 背景色を白に設定 */
+  border-radius: 5px; /* 角を丸くする */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 影を追加 */
+  min-width: 50px; /* 最小幅を設定 */
+  max-width: 100px; /* 最大幅を設定 */
+  width: auto; /* 幅を自動調整 */
+}
+
+#custom-context-menu .dropdown-item {
+  padding: 5px 10px; /* パディングを調整 */
+  white-space: nowrap; /* テキストを折り返さない */
+}
+

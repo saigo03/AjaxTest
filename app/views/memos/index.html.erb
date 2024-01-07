@@ -3,8 +3,8 @@
     
     <!-- ナビゲーションパーシャルを読み込む -->
     <%= render 'shared/navbar' %>
-
     <%= render 'shared/mypage' %>
+    <%= render 'shared/contextMenu' %>
 
     <!-- メモ一覧 -->
     <main class="col-md-10 bg-light p-4">
@@ -17,14 +17,14 @@
 
       <%= link_to '新しいメモ', new_folder_memo_path(@folder), class: 'btn btn-primary mb-3' %>
 
-      <div class="list-group">
+      <div class="list-group" data-folder-id="<%= @folder.id %>">
         <% @memos.each do |memo| %>
-          <div class="list-group-item d-flex justify-content-between align-items-center p-3">
+            <div class="list-group-item d-flex justify-content-between align-items-center p-3" data-memo-id="<%= memo.id %>">
             <%= memo.title %>
             <div>
               <%= link_to '表示', folder_memo_path(@folder, memo), class: 'btn btn-secondary btn-sm mx-1' %>
               <%= link_to '編集', edit_folder_memo_path(@folder, memo), class: 'btn btn-warning btn-sm mx-1' %>
-              <%= link_to '削除', folder_memo_path(@folder, memo), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm mx-1' %>
+              <%= link_to '削除', folder_memo_path(@folder, memo), data: {turbo_method: "delete", turbo_confirm: "削除してよろしいですか？"}, class: 'btn btn-danger btn-sm mx-1' %>
             </div>
           </div>
         <% end %>

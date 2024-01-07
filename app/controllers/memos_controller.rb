@@ -47,9 +47,9 @@ class MemosController < ApplicationController
   # DELETE /memos/1 or /memos/1.json
   def destroy
     @memo.destroy
-
+  
     respond_to do |format|
-      format.html { redirect_to memos_url, notice: "Memo was successfully destroyed." }
+      format.html { redirect_to folder_memos_path(@folder), notice: "Memo was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -1,0 +1,8 @@
+<div id="custom-context-menu" class="d-none">
+  <%= link_to '削除', '#', data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" }, id: "delete-memo", class: 'dropdown-item' %>
+</div>
+
+
+
+<%# link_to '削除', folder_memo_path(@folder, memo), data: {turbo_method: "delete", turbo_confirm: "削除してよろしいですか？"}  %>
+<%# この形だと@folderとmemoの番号がわからないため削除時にどのメモを削除するかの情報がないためサーバーエラーとなる %>
