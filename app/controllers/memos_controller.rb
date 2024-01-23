@@ -32,15 +32,13 @@ class MemosController < ApplicationController
     end
   end
 
-
   def update
-    # タイトルが空白の場合、自動的に「無題」を設定
-    params[:memo][:title] = '無題' if params[:memo][:title].blank?
-    
+    @memo = Memo.find(params[:id])
+  
     if @memo.update(memo_params)
-      redirect_to folder_memos_path(@folder), notice: 'Memo was successfully updated.'
+      render json: { success: true }
     else
-      render :edit
+      render json: { success: false, error: @memo.errors.full_messages.to_sentence }
     end
   end
 

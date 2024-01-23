@@ -28,7 +28,7 @@
   border-radius: 5px; /* 角を丸くする */
   box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 影を追加 */
   min-width: 50px; /* 最小幅を設定 */
-  max-width: 100px; /* 最大幅を設定 */
+  max-width: 150px; /* 最大幅を設定 */
   width: auto; /* 幅を自動調整 */
 }
 
@@ -37,3 +37,23 @@
   white-space: nowrap; /* テキストを折り返さない */
 }
 
+
+
+/*コンテキストメニューから名前変更用のCSS*/
+/* スタイルシートに追加 */
+/* スタイルシートに追加 */
+.rename-popup {
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border: 1px solid #888;
+  background-color: #fefefe;
+}
+
+.rename-popup-content {
+  margin: auto;
+  width: auto;
+}
